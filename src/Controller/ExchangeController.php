@@ -24,7 +24,7 @@ class ExchangeController extends AbstractController
     /**
      * @Route ("/getExchangeData", name="app_getExchangeData")
      */
-    public function getExchangeData( Request $request):JsonResponse{
+    public function getExchangeData( Request $request):Response{
         $client = new NoPrivateNetworkHttpClient(HttpClient::create());
         $time = new \DateTime();
         $from = $client->request('GET', 'https://api.frankfurter.app/'.$request->query->get('date_from').'?base=PLN&symbols=EUR,USD,GBP,CZK');
@@ -43,15 +43,18 @@ class ExchangeController extends AbstractController
             }
 
         }
-        dd($result);
-
-
-        dd($from,$today,$request->query->get('date_from'));
-
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ExchangeController.php',
+        return $this->render('exchange/table.html.twig', [
+            'result' => $result,
         ]);
+//        dd($result);
+//
+//
+//        dd($from,$today,$request->query->get('date_from'));
+//
+//        return $this->json([
+//            'message' => 'Welcome to your new controller!',
+//            'path' => 'src/Controller/ExchangeController.php',
+//        ]);
     }
 
 }
