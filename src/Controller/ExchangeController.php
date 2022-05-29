@@ -53,15 +53,6 @@ class ExchangeController extends AbstractController
             'notification' => 'error',
             'notification_value' => 'Błąd wskazania daty'
         ]);
-//        dd($result);
-//
-//
-//        dd($from,$today,$request->query->get('date_from'));
-//
-//        return $this->json([
-//            'message' => 'Welcome to your new controller!',
-//            'path' => 'src/Controller/ExchangeController.php',
-//        ]);
     }
 
 }
