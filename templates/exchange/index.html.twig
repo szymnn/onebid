@@ -13,7 +13,7 @@
 
    Wprowadź datę, która cie interesuje! Następnie wciśnij "pokaż"
 
-    <form action="{{ path('app_getExchangeData') }}" type="post">
+    <form action="{{ path('app_getExchangeData') }}" method="post">
         <input type="date" name="date_from" id="date_from">
         <input type="submit" value="Pokaż">
         {#            <input type="button" data-href="{{ path('get_data', {'date_from': }) }}">#}

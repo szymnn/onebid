@@ -1,0 +1,9 @@
+{% block notifications %}
+    {% if notification is defined  %}
+        {% if notification == 'error' %}
+            <div class="alert alert-danger" role="alert">
+                {{ notification_value }}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}
