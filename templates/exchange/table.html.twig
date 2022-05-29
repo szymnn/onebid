@@ -1,33 +1,38 @@
 {% include 'exchange/index.html.twig' %}
 
 {% block table %}
-    <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div class="table-responsive">
-            <table class="table table-striped table-sm">
-                <thead>
-                <tr>
-                    <th scope="col">Waluta</th>
-                    <th scope="col">Kurs z dziś </th>
-                    <th scope="col">Kurs ze wskazanej daty </th>
-                    <th scope="col">Zmiana procentowa</th>
+    <div class="container-xxl my-md-4 bd-layout">
+        <div class="bd-content ps-lg-4">
+            <div class="bd-example">
+                <p>Za wartość 1 PLN można zakupić </p>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Waluta</th>
+                            <th scope="col">Kurs z dziś </th>
+                            <th scope="col">Kurs ze wskazanej daty </th>
+                            <th scope="col">Zmiana procentowa</th>
 
-                </tr>
-                </thead>
-                <tbody>
-                {% for key, type in result %}
-                    {% for val, valut in type %}
-                    <tr>
-                        <td>{{ val }}</td>
-                        <td>{{ valut['now'] }}</td>
-                        <td>{{ valut['past'] }}</td>
-                        {% if valut['precentage'] > 0.00 %}<td class="text-success fw-bold">+ {{ valut['precentage'] }} %</td>
-                        {% else %}<td class="text-danger fw-bold">- {{ valut['precentage'] }} %</td>
-                        {% endif %}
-                    </tr>
-                    {% endfor %}
-                {% endfor %}
-                </tbody>
-            </table>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for key, type in result %}
+                            {% for val, valut in type %}
+                            <tr>
+                                <td>{{ val }}</td>
+                                <td>{{ valut['now'] }} </td>
+                                <td>{{ valut['past'] }} </td>
+                                {% if valut['precentage'] > 0.00 %}<td class="text-success fw-bold">+ {{ valut['precentage'] }} %</td>
+                                {% else %}<td class="text-danger fw-bold">{{ valut['precentage'] }} %</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
